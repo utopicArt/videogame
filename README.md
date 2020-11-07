@@ -1,2 +1,2 @@
 # videogame
-Un nuevo comienzo
+Comienzo de la nueva aventura de Deep Skip
