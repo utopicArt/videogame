@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     public float livingTime = 3f;
     void Start()
     {
-        //Destroy(this.gameObject, livingTime);
+        Destroy(this.gameObject, livingTime);
     }
 
     void Update()
@@ -18,13 +18,15 @@ public class Bullet : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         Vector2 movement = direction.normalized * speed * Time.deltaTime;
-        if (horizontal < 0f || horizontal > 0f)
+
+        transform.position = new Vector2(transform.position.x + movement.x, transform.position.y + movement.y);
+        /*if (horizontal < 0f || horizontal > 0f)
         {
             transform.position = new Vector2(transform.position.x + horizontal, transform.position.y);
         }
-        if (vertical > 0f || Input.GetKeyDown(KeyCode.Space))
+        if (vertical >= -1f || Input.GetKeyDown(KeyCode.Space))
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
-        }
+            transform.position = new Vector2(transform.position.x, transform.position.y + vertical);
+        }*/
     }
 }

@@ -7,18 +7,18 @@ using UnityEngine.UI;
 public class sonidoController : MonoBehaviour{
     public Image mute, midd, up;
     public Slider slider;
-    private int volumen, vol;
+    private int volume;
     private float active;
 
     public void volumeLayer(){
-        vol = (int)Math.Round(slider.value);
+        volume = (int)Math.Round(slider.value);
         active = (slider.value * 0.03f);
         active = (active <= 0.40f ? 0.4f : active);
 
-        if (vol > 0 && vol < 50){
+        if (volume > 0 && volume < 50){
             setVolumeLayer((float)(1 - (slider.value * 0.0122449f)), active, 0.3f);
         }
-        else if (vol >= 50){
+        else if (volume >= 50){
             active = (1 - (1 - (slider.value / 50f)) * - 1);
             active = (active <= 0.4f ? 0.4f : active);
             setVolumeLayer(0.3f, active, (float)(slider.value * 0.00999f));

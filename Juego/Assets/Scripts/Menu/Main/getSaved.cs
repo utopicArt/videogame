@@ -13,27 +13,26 @@ using TMPro;
 public class getSaved : MonoBehaviour
 {
 
-    public GameObject brilloPanel;
-    public Slider sliderBrillo, sliderVolumen;
-    private float brillo;
-    private Image nivelBrillo;
-    private float volumen;
+    public GameObject panelBrightness;
+    public Slider brightnessSlider, volumeSlider;
+    private float brightness;
+    private Image brightnessLevel;
+    private float volume;
 
     void Start()
     {
-        nivelBrillo = brilloPanel.GetComponent<Image>();
+        brightnessLevel = panelBrightness.GetComponent<Image>();
         obtenerConfiguración();
     }
 
     public void obtenerConfiguración()
     {
-        brillo = PlayerPrefs.GetFloat("brillo", 0.5f);
-        volumen = (100f * PlayerPrefs.GetFloat("volumen", 0.5f));
+        brightness = PlayerPrefs.GetFloat("brightness", 0.01f);
+        volume = (100f * PlayerPrefs.GetFloat("volume", 0.25f));
 
-        brillo = (brillo != 0 ? (int)Math.Round((PlayerPrefs.GetFloat("brillo", 0.5f) - 1) / -0.01) : 0);
-        sliderBrillo.value = brillo;
-        sliderVolumen.value = volumen;
-        nivelBrillo.color = new Color(0f, 0f, 0f, (1 - (sliderBrillo.value * 0.01f)));
+        brightness = (brightness != 0f ? (int)Math.Round((brightness - 1) / -0.01) : 0f);
+        brightnessSlider.value = brightness;
+        volumeSlider.value = volume;
+        brightnessLevel.color = new Color(0f, 0f, 0f, (1 - (brightnessSlider.value * 0.01f)));
     }
-
 }

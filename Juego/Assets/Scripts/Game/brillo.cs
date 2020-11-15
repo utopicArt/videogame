@@ -10,7 +10,7 @@ public class brillo : MonoBehaviour{
     private Image nivelBrillo;
     
     void Start(){
-        float b = PlayerPrefs.GetFloat("brillo", 0.5f);
+        float b = PlayerPrefs.GetFloat("brillo", 0f);
         nivelBrillo = brilloContainer.GetComponent<Image>();
         nivelBrillo.color = new Color(0f,0f,0f,b);
     }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class audioController : MonoBehaviour
 {
     public AudioSource audioSource;
-    public Slider sliderVolumen;
+    public Slider volumeSlider;
 
     void Start()
     {
@@ -15,6 +15,6 @@ public class audioController : MonoBehaviour
 
     public void setVolumen()
     {
-        audioSource.volume = (sliderVolumen.value * 0.01f);
+        audioSource.volume = (volumeSlider.value * 0.01f);
     }
 }

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
 /*
     Archivo de guardado de configuraciones
@@ -11,43 +10,43 @@ using Debug = UnityEngine.Debug;
 
 public class saveChanges : MonoBehaviour
 {
-    public Slider sliderBrillo, sliderVolumen;
-    public GameObject message, panelPrincipal, panelConfig;
+    public Slider brightnessSlider, volumeSlider;
+    public GameObject message, mainPanel, panelConfig;
 
     public void Nuevoscambios()
     {
-        float brilloGuardado = PlayerPrefs.GetFloat("brillo", 0.5f);
-        float volumenGuardado = (100f * PlayerPrefs.GetFloat("volumen", 0.5f));
-        bool existenCambios = false;
+        float savedBrightness = PlayerPrefs.GetFloat("brightness", 0.01f);
+        float savedVolume = (100f * PlayerPrefs.GetFloat("volume", 0.25f));
+        bool newChanges = false;
 
-        brilloGuardado = (brilloGuardado != 0 ? (int)Math.Round((PlayerPrefs.GetFloat("brillo", 0.5f) - 1) / -0.01) : 0);
+        savedBrightness = (savedBrightness != 0 ? (int)Math.Round((savedBrightness - 1) / -0.01) : 0);
 
-        if (!sliderBrillo.value.Equals(brilloGuardado))
+        if (!brightnessSlider.value.Equals(savedBrightness))
         {
-            existenCambios = true;
+            newChanges = true;
         }
-        if (!sliderVolumen.value.Equals(volumenGuardado))
+        if (!volumeSlider.value.Equals(savedVolume))
         {
-            existenCambios = true;
+            newChanges = true;
         }
 
-        message.SetActive((existenCambios?true:false));
-        panelPrincipal.SetActive((existenCambios?false:true));
-        panelConfig.SetActive((existenCambios?true:false));
+        message.SetActive((newChanges?true:false));
+        mainPanel.SetActive((newChanges?false:true));
+        panelConfig.SetActive((newChanges?true:false));
     }
 
     public void comparar()
     {
-        float brilloGuardado = PlayerPrefs.GetFloat("brillo", 0.5f);
-        int volumenGuardado = (int)Math.Round(PlayerPrefs.GetFloat("volumen", 0.5f));
+        float savedBrightness = PlayerPrefs.GetFloat("brightness", 0.01f);
+        int savedVolume = (int)Math.Round(PlayerPrefs.GetFloat("volume", 0.5f));
 
-        if (!brilloGuardado.Equals(1 - (sliderBrillo.value * 0.01f)))
+        if (!savedBrightness.Equals(1 - (brightnessSlider.value * 0.01f)))
         {
-            guardar("brillo");
+            guardar("brightness");
         }
-        if (!volumenGuardado.Equals(1 - (sliderVolumen.value * 0.01f)))
+        if (!savedVolume.Equals(1 - (volumeSlider.value * 0.01f)))
         {
-            guardar("volumen");
+            guardar("volume");
         }
     }
 
@@ -55,11 +54,11 @@ public class saveChanges : MonoBehaviour
     {
         switch (componente)
         {
-            case "brillo":
-                PlayerPrefs.SetFloat("brillo", (1 - (sliderBrillo.value * 0.01f)));
+            case "brightness":
+                PlayerPrefs.SetFloat("brightness", (1 - (brightnessSlider.value * 0.01f)));
                 break;
-            case "volumen":
-                PlayerPrefs.SetFloat("volumen", (sliderVolumen.value * 0.01f));
+            case "volume":
+                PlayerPrefs.SetFloat("volume", (volumeSlider.value * 0.01f));
                 break;
         }
     }

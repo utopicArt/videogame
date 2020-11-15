@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,19 +7,29 @@ using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
 /*
-    Archivo de controlador de niveles y dificultad
+    Archivo de controlador de levels y dificultad
 */
 
 public class levelController : MonoBehaviour
 {
-    private int nivelJuego = 0;
-    public GameObject selectorDificultad, message;
-    public Button volver, dificultadBtn, jugar, aceptar;
-    private int cntr;
+    private int gameLevel = 0;
+    private Color c;
+    public GameObject message;
 
-    public void setLevel(int nivel)
+    public void setLevel(int level)
     {
-        nivelJuego = nivel;
+        GameObject[] levels;
+        levels = GameObject.FindGameObjectsWithTag("Nivel");
+        gameLevel = level;
+        foreach (GameObject btn in levels)
+        {
+            c = btn.GetComponent<Image>().color;
+            c.a = 0f;
+            btn.GetComponent<Image>().color = c;
+        }
+        c = levels[level - 1].GetComponent<Image>().color;
+        c.a = 0.29f;
+        levels[level - 1].GetComponent<Image>().color = c;
     }
 
     public void goBack()
@@ -28,17 +39,9 @@ public class levelController : MonoBehaviour
 
     public void comprobarValores()
     {
-        int dificultad = PlayerPrefs.GetInt("dificultad", 0);
-        if (nivelJuego > 0 && !dificultad.Equals(0)){
+        int dificultad = PlayerPrefs.GetInt("difficulty", 2);
+        if (gameLevel > 0){
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        else if (dificultad.Equals(0)){
-            selectorDificultad.SetActive(true);
-            volver.gameObject.SetActive(false);
-            dificultadBtn.gameObject.SetActive(false);
-            jugar.gameObject.SetActive(false);
-            aceptar.gameObject.SetActive(true);
-            cntr++;
         }
         else{
             message.SetActive(true);

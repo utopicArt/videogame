@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /*
-    Archivo de configuración del brillo
+    Archivo de configuración del brillo mediante slider
 */
 
 public class panelBrillo : MonoBehaviour{
 
     public Slider slider;
-    public GameObject brilloPanel;
+    public GameObject panelBrightness;
     private Image img;
 
     void Start(){
-        img = brilloPanel.GetComponent<Image>();
+        img = panelBrightness.GetComponent<Image>();
     }
 
     public void setBrillo(){

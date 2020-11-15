@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class difcultadController : MonoBehaviour
 {
-    public GameObject nivelDificultad;
 
-    public void setDificultad(int dificultad)
+    public void setDificultad(int difficulty)
     {
-        PlayerPrefs.SetInt("dificultad", dificultad);
+        PlayerPrefs.SetInt("difficulty", difficulty);
     }
 }
