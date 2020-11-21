@@ -56,9 +56,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Game\TestingKeys.cs" />
-     <Compile Include="Assets\Scripts\Game\brillo.cs" />
+     <Compile Include="Assets\Scripts\Game\General\brillo.cs" />
      <Compile Include="Assets\Scripts\Menu\Settings\saveChanges.cs" />
      <Compile Include="Assets\Scripts\Game\Weapon.cs" />
+     <Compile Include="Assets\Scripts\Game\Colliders\TriggerDetector.cs" />
      <Compile Include="Assets\Scripts\Menu\Settings\panelBrillo.cs" />
      <Compile Include="Assets\Scripts\Menu\Settings\tmpSlider.cs" />
      <Compile Include="Assets\Scripts\Characters\InstantiatePrefab.cs" />
@@ -66,13 +67,16 @@
      <Compile Include="Assets\Scripts\Menu\Settings\resetConfigData.cs" />
      <Compile Include="Assets\Scripts\Menu\Settings\configValues.cs" />
      <Compile Include="Assets\Scripts\Game\EnemyPatrol.cs" />
+     <Compile Include="Assets\Scripts\Game\Colliders\ColliderDetector.cs" />
      <Compile Include="Assets\Scripts\Game\Bullet.cs" />
      <Compile Include="Assets\Scripts\Menu\Settings\sonidoController.cs" />
      <Compile Include="Assets\Scripts\Menu\Levels\volveraMenu.cs" />
+     <Compile Include="Assets\Scripts\Characters\Asher\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Menu\Levels\difcultadController.cs" />
      <Compile Include="Assets\Scripts\Game\LoadScene.cs" />
      <Compile Include="Assets\Scripts\Menu\Main\menuPrincipal.cs" />
      <Compile Include="Assets\Scripts\Characters\characterController.cs" />
+     <Compile Include="Assets\Scripts\Characters\Attack.cs" />
      <Compile Include="Assets\Scripts\Menu\Settings\audioController.cs" />
      <Compile Include="Assets\Scripts\Menu\Levels\levelController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
